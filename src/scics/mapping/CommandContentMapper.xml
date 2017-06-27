@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scics.dao.ICommandContentDao" >
+  <resultMap id="CommandContentMap" type="scics.pojo.CommandContent" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="command_id" property="commandId" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <association property="command" resultMap="scics.dao.ICommand.CommandMap" ></association>
+  </resultMap>
+  
+  <insert id="insertBatch" parameterType="java.util.List">
+  	insert into command_content(command_id,content) values
+  	<foreach collection="list" item="item" separator=",">
+  		(#{item.commandId},#(item.content))
+  	</foreach>
+  </insert>
+</mapper>

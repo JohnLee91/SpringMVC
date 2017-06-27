@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scics.dao.IMessageDao" >
+  <resultMap id="BaseResultMap" type="scics.pojo.Message" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="command" property="command" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, command, description, content
+  </sql>
+  <select id="queryMessageList" resultMap="BaseResultMap" parameterType="scics.pojo.Message" >
+    select 
+    <include refid="Base_Column_List" />
+    from message
+    <where> 
+	    <if test="command != null and !&quot;&quot;.equals(command.trim())">
+	         command = #{command}
+	    </if> 
+	    <if test="description != null and !&quot;&quot;.equals(description.trim())">
+	        AND description like '%' #{description} '%'
+	    </if>
+  	</where>
+  </select>
+    <select id="queryMessageListByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select 
+	    <include refid="Base_Column_List" />
+	    from message
+	    <where> 
+		    <if test="message.command != null and !&quot;&quot;.equals(message.command.trim())">
+		         command = #{message.command}
+		    </if> 
+		    <if test="message.description != null and !&quot;&quot;.equals(message.description.trim())">
+		        AND description like '%' #{message.description} '%'
+		    </if>
+	  	</where>
+    	order by id
+  </select>
+  <delete id="deleteById" parameterType="Integer">
+  	delete from message where id = #{id}
+  </delete>
+  
+   <delete id="deleteByIds" parameterType="java.util.List">
+  	delete from message where id in
+  	<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+  		#{item}
+  	</foreach>
+  </delete>
+</mapper>

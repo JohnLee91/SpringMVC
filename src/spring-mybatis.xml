@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+                        http://www.springframework.org/schema/tx 
+           				http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+           				http://www.springframework.org/schema/aop 
+           				http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+    <!-- 自动扫描 -->
+    <context:component-scan base-package="scics" />
+    <!-- 引入配置文件 -->
+    <bean id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties" />  
+    </bean>  
+  
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  
+        destroy-method="close">  
+        <property name="driverClassName" value="${driver}" />  
+        <property name="url" value="${url}" />  
+        <property name="username" value="${username}" />  
+        <property name="password" value="${password}" />  
+        <!-- 初始化连接大小 -->  
+        <property name="initialSize" value="${initialSize}"></property>  
+        <!-- 连接池最大数量 -->  
+        <property name="maxActive" value="${maxActive}"></property>  
+        <!-- 连接池最大空闲 -->  
+        <property name="maxIdle" value="${maxIdle}"></property>  
+        <!-- 连接池最小空闲 -->  
+        <property name="minIdle" value="${minIdle}"></property>  
+        <!-- 获取连接最大等待时间 -->  
+        <property name="maxWait" value="${maxWait}"></property>  
+    </bean>  
+  
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource" />  
+        <!-- 自动扫描mapping.xml文件 -->  
+        <property name="mapperLocations" value="classpath:scics/mapping/*.xml"></property>
+        <!-- 配置Mybatis的插件plugin，即mybatis的拦截器-->
+	    <property name="plugins">
+	        <array>
+	            <bean class="scics.interceptor.PageInterceptor">
+	                <property name="properties">
+	                    <value>
+	                        test=abc
+	                    </value>
+	                </property>
+	            </bean>
+	        </array>
+	    </property>
+    </bean>  
+  
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="scics.dao" />  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+    </bean>  
+  
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx 无论使用什么方式的事务管理，都要配置事务管理器-->  
+    <bean id="transactionManager"  
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource" ref="dataSource" />  
+    </bean>
+    <!-- 配置事务管理的模板：Spring为了简化事务管理的代码而提供的类，编程式的事务管理，不常用 -->
+    <!-- <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+    	<property name="transactionManager" ref="transactionManager"></property>
+    </bean> -->
+    <!-- 配置事务管理业务层的代理,也不常用 -->
+    <!-- <bean id="" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    	 配置目标对象
+    	<property name="target" ref=""></property>
+    </bean> -->
+    
+    <!-- 配置事务的增强，基于AspectJ的XML配置，经常使用
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    	<tx:attributes>
+    		<tx:method name="transfer" propagation="REQUIRED" isolation="DEFAULT" read-only="false"/>
+    	</tx:attributes>
+    </tx:advice>
+     配置切面
+    <aop:config>
+    	 配置切点 
+    	<aop:pointcut expression="execution(* scics.service.IAccountService+.*(..))" id="pointcut1"/>
+    	 配置切面 
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut1"/>
+    </aop:config> -->
+    
+    <!-- 开启事务注解 ，经常使用-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+  
+</beans>

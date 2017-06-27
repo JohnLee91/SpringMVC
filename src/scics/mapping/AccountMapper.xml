@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scics.dao.IAccountDao" >
+  <resultMap id="BaseResultMap" type="scics.pojo.Account" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, money
+  </sql>
+  
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where name = #{name}
+  </select>
+  
+  <update id="outMoney" parameterType="scics.pojo.Account" >
+    update account
+    <set >
+      <if test="money != null" >
+        money = money - #{money,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where name = #{name}
+  </update>
+  <update id="inMoney" parameterType="scics.pojo.Account" >
+    update account
+    <set >
+      <if test="money != null" >
+        money = money + #{money,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where name = #{name}
+  </update>
+   
+ </mapper>

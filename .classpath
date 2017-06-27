@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/aspectjweaver-1.7.4.jar" sourcepath="F:/Development/apache-maven-3.3.9/MavenRepository/maven_jar/org/aspectj/aspectjweaver/1.7.4/aspectjweaver-1.7.4-sources.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/commons-dbcp-1.2.2.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/commons-pool-1.3.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/fastjson-1.1.41.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/jackson-core-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/javaee-api-7.0.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/javax.mail-1.5.0.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/junit-4.11.jar" sourcepath="F:/Development/apache-maven-3.3.9/MavenRepository/maven_jar/junit/junit/4.11/junit-4.11-sources.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/log4j-1.2.17.jar" sourcepath="F:/Development/apache-maven-3.3.9/MavenRepository/maven_jar/log4j/log4j/1.2.17/log4j-1.2.17-sources.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/mybatis-3.2.6.jar" sourcepath="F:/Development/apache-maven-3.3.9/MavenRepository/maven_jar/org/mybatis/mybatis/3.2.6/mybatis-3.2.6-sources.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/mybatis-spring-1.2.2.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/mysql-connector-java-5.1.30.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/slf4j-api-1.7.7.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/slf4j-log4j12-1.7.7.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-aop-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-beans-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-context-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-context-support-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-core-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-expression-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-jdbc-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-oxm-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-test-4.0.2.RELEASE.jar" sourcepath="F:/Development/apache-maven-3.3.9/MavenRepository/maven_jar/org/springframework/spring-test/4.0.2.RELEASE/spring-test-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-tx-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-web-4.0.2.RELEASE.jar" sourcepath="F:/Development/apache-maven-3.3.9/MavenRepository/maven_jar/org/springframework/spring-web/4.0.2.RELEASE/spring-web-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="F:/Developmentl/MyEclipse/Workspaces/springmvc_jar/spring-webmvc-4.0.2.RELEASE.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>
